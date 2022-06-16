@@ -85,3 +85,10 @@ CONFIG_MOUSE_PS2=m
 
 # Enables support for checkpoint/restore
 CONFIG_CHECKPOINT_RESTORE=y
+
+# Disable support for filesystems we do not use
+CONFIG_CRAMFS=n
+CONFIG_HFS_FS=n
+CONFIG_HFSPLUS_FS=n
+CONFIG_JFFS2_FS=n
+CONFIG_UDF_FS=n
