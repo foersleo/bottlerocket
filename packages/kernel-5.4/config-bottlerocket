@@ -92,3 +92,9 @@ CONFIG_HFS_FS=n
 CONFIG_HFSPLUS_FS=n
 CONFIG_JFFS2_FS=n
 CONFIG_UDF_FS=n
+
+# Disable support for network protocols we do not use
+CONFIG_IP_DCCP=n
+CONFIG_IP_SCTP=n
+CONFIG_RDS=n
+CONFIG_TIPC=n
