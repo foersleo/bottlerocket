@@ -196,8 +196,8 @@ dependencies = [
  "aws-iam-authenticator",
  "cni",
  "cni-plugins",
- "kernel-5_15",
- "kmod-5_15-nvidia",
+ "kernel-6_1",
+ "kmod-6_1-nvidia",
  "kubernetes-1_27",
  "nvidia-container-toolkit",
  "nvidia-k8s-device-plugin",
@@ -506,6 +506,14 @@ version = "0.1.0"
 dependencies = [
  "glibc",
  "kernel-5_15",
+]
+
+[[package]]
+name = "kmod-6_1-nvidia"
+version = "0.1.0"
+dependencies = [
+ "glibc",
+ "kernel-6_1",
 ]
 
 [[package]]

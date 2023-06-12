@@ -21,12 +21,12 @@ included-packages = [
     "aws-iam-authenticator",
     "cni",
     "cni-plugins",
-    "kernel-5.15",
+    "kernel-6.1",
     "kubelet-1.27",
     "release",
     "nvidia-container-toolkit",
     "nvidia-k8s-device-plugin",
-    "kmod-5.15-nvidia-tesla-515",
+    "kmod-6.1-nvidia-tesla-525",
 ]
 kernel-parameters = [
     "console=tty0",
@@ -43,9 +43,9 @@ path = "/dev/null"
 aws-iam-authenticator = { path = "../../packages/aws-iam-authenticator" }
 cni = { path = "../../packages/cni" }
 cni-plugins = { path = "../../packages/cni-plugins" }
-kernel-5_15 = { path = "../../packages/kernel-5.15" }
+kernel-6_1 = { path = "../../packages/kernel-6.1" }
 kubernetes-1_27 = { path = "../../packages/kubernetes-1.27" }
 release = { path = "../../packages/release" }
 nvidia-container-toolkit = { path = "../../packages/nvidia-container-toolkit" }
 nvidia-k8s-device-plugin = { path = "../../packages/nvidia-k8s-device-plugin" }
-kmod-5_15-nvidia = { path = "../../packages/kmod-5.15-nvidia" }
+kmod-6_1-nvidia = { path = "../../packages/kmod-6.1-nvidia" }
