@@ -169,3 +169,6 @@ CONFIG_SCSI_SMARTPQI=m
 
 # Disable edac driver for intel 10nm memory controllers
 # CONFIG_EDAC_I10NM is not set
+
+# Disable generic MDIO driver
+# CONFIG_MDIO is not set
