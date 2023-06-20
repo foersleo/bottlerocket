@@ -103,6 +103,13 @@ CONFIG_MOUSE_PS2=m
 
 # Add support for IPMI drivers
 CONFIG_IPMI_HANDLER=m
+# Disable more specialized IPMI drivers that are not relevant for our use-cases
+# CONFIG_IPMI_DEVICE_INTERFACE is not set
+# CONFIG_IPMI_PANIC_EVENT is not set
+# CONFIG_IPMI_POWEROFF is not set
+# CONFIG_IPMI_SI is not set
+# CONFIG_IPMI_WATCHDOG is not set
+# CONFIG_ACPI_IPMI is not set
 
 # Add support for bootconfig
 CONFIG_BOOT_CONFIG=y
