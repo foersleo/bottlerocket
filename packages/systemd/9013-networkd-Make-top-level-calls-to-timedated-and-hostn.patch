@@ -1,0 +1,45 @@
+From b00fa7e12d7a653388b2df92eb422de0aeb19f0b Mon Sep 17 00:00:00 2001
+From: Leonard Foerster <foersleo@amazon.com>
+Date: Tue, 27 Jun 2023 08:46:24 +0000
+Subject: [PATCH] networkd: Make top-level calls to timedated and hostnamed
+ conditional
+
+networkd registers a function to call when first connecting to DBUS.
+This function makes three calls to other DBUS services (hostnamed and
+timedated), which are not always configured to being built. Make these
+calls conditional on if the called service is configured.
+
+Removing these calls to non-existing services cleans up confusing and
+inconsequential failure messages on boot.
+
+Signed-off-by: Leonard Foerster <foersleo@amazon.com>
+---
+ src/network/networkd-manager.c | 6 ++++++
+ 1 file changed, 6 insertions(+)
+
+diff --git a/src/network/networkd-manager.c b/src/network/networkd-manager.c
+index ff2770f..3416c1c 100644
+--- a/src/network/networkd-manager.c
++++ b/src/network/networkd-manager.c
+@@ -94,12 +94,18 @@ static int on_connected(sd_bus_message *message, void *userdata, sd_bus_error *r
+         assert(m);
+ 
+         /* Did we get a timezone or transient hostname from DHCP while D-Bus wasn't up yet? */
++#if ENABLE_HOSTNAMED
+         if (m->dynamic_hostname)
+                 (void) manager_set_hostname(m, m->dynamic_hostname);
++#endif
++#if ENABLE_TIMEDATED
+         if (m->dynamic_timezone)
+                 (void) manager_set_timezone(m, m->dynamic_timezone);
++#endif
++#if ENABLE_HOSTNAMED
+         if (m->product_uuid_requested)
+                 (void) manager_request_product_uuid(m);
++#endif
+ 
+         return 0;
+ }
+-- 
+2.40.0
+
